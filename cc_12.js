@@ -49,3 +49,30 @@
             addProductItem(productName);
         }
     });
+
+// Task 4 - Demonstrated Event Bubbling in Customer Section
+    const customerSection = document.getElementById("customerSection");
+
+    // Function to create a customer card
+    function createCustomerCard(name) {
+        const card = document.createElement("div");
+        card.setAttribute("class", "customer-card");
+        card.textContent = name;
+
+        // Click event with stopPropagation
+        card.addEventListener("click", (event) => {
+            console.log("Customer card clicked");
+            event.stopPropagation(); // Prevents event bubbling
+        });
+
+        customerSection.appendChild(card);
+    }
+
+    // Adding sample customer cards
+    createCustomerCard("Alice Johnson");
+    createCustomerCard("John Doe");
+
+    // Parent container event to demonstrate bubbling
+    customerSection.addEventListener("click", () => {
+        console.log("Customer section clicked");
+    });
