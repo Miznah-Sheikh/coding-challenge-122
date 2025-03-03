@@ -22,3 +22,30 @@
         card.innerHTML += " - Updated"; // Appending text update
         card.style.backgroundColor = "#f0f0f0"; // Changing background color
     });
+
+ // Task 3 - Implemented Dynamic Inventory List
+    const inventoryList = document.getElementById("inventoryList");
+    const addItemButton = document.getElementById("addItemButton");
+
+    // Function to add a new inventory item
+    function addProductItem(productName) {
+        const li = document.createElement("li");
+        li.setAttribute("class", "product-item");
+        li.setAttribute("data-product", productName);
+        li.textContent = productName;
+
+        // Add click event to remove item
+        li.addEventListener("click", () => {
+            inventoryList.removeChild(li);
+        });
+
+        inventoryList.appendChild(li);
+    }
+
+    // Event listener for adding items
+    addItemButton.addEventListener("click", () => {
+        const productName = prompt("Enter product name:");
+        if (productName) {
+            addProductItem(productName);
+        }
+    });
